@@ -11,12 +11,14 @@ setup(
     keywords="optical character recognition",
     packages=find_packages(),
     install_requires=[
+        "mmcv-full==1.3.1",
         "Pillow",
         "tensorboardX>=2.0",
         "opencv-python>=4.4.0",
         "numpy>=1.18.1",
         "albumentations==0.4.3",
         "imagecorruptions==1.1.0",
+        "soynlp",
     ],
     classifiers=[
         "Programming Language :: Python :: 3",

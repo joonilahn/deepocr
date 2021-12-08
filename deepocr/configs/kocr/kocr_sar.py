@@ -10,7 +10,7 @@ optimizer_config = dict(grad_clip=None)
 
 # learning schedule
 lr_config = dict(
-    policy="ReducOnPlateau",
+    policy="ReduceOnPlateau",
     threshold=0.001,
     patience=5,
     verbose=True,

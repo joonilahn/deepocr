@@ -62,7 +62,7 @@ class AsterBlock(nn.Module):
 class ResNetAster(nn.Module):
     """ResNet Backbone for Aster model."""
 
-    def __init__(self, in_channels=1, batch_norm=True, frozen_stages=-1):
+    def __init__(self, in_channels=1, batch_norm=True, frozen_stages=-1, pretrained=None):
         super(ResNetAster, self).__init__()
         in_channels = in_channels
         self.frozen_stages = frozen_stages

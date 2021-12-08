@@ -1,13 +1,22 @@
-# DeepOCR implementations in PyTorch
+# Deep Learning OCR Framework in PyTorch
 
 ## Introduction
-DeepOCR is a ocr framework which provides many types of PyTorch implementations of Text Recognition models.
+DeepOCR is a OCR framework which provides many types of PyTorch implementations for deep learning based Text Recognition models.
 
 You can train your own text recognition models using built-in config files that define all the hyperparameters for both models and train setups.
 
 The modular structures and config schemes were influenced by [OpenMMLab's MMDetetion framework](https://github.com/open-mmlab/mmdetection), open source object detection toolbox.
 
 ## Supported Models
+
+Recognizers:
+- [x] CRNN-CTC [(https://arxiv.org/abs/1511.04176)](https://arxiv.org/abs/1511.04176)
+- [x] ASTER [(https://paperswithcode.com/paper/aster-an-attentional-scene-text-recognizer)](https://paperswithcode.com/paper/aster-an-attentional-scene-text-recognizer)
+- [x] SAR (Show, Attend and Read) [(https://arxiv.org/abs/1811.00751)](https://arxiv.org/abs/1811.00751)
+- [x] SATRN (On Recognizing Texts of Arbitrart Shapes with 2D Self-Attention) [(https://arxiv.org/abs/1910.04396)](https://arxiv.org/abs/1910.04396)
+- [x] SRN (Towards Accurate Scene Text Recognition with Semantic Reasoning Networks) [(https://arxiv.org/abs/2003.12294)](https://arxiv.org/abs/2003.12294)
+
+You can also customize your own text recognizer models with combinations of the following modules.
 
 Pretransform:
 - [x] ASTERTransform (STNHead + TPS)
@@ -19,7 +28,9 @@ Backbones:
 
 Encoders:
 - [x] LSTMEncoder
-- [x] TransformerEncoder
+- [x] TransformerEncoder1D
+- [x] TransformerEncoder2D
+- [x] PVAM (Parallel Visual Attention Model) 
 
 Decoders:
 - [x] CTCDecoder
@@ -28,6 +39,7 @@ Decoders:
 - [x] AttentionBidirectionalDecoder
 - [x] TransformerDecoder1D
 - [x] TransformerDecoder2D
+- [x] VSFD (Visual-Semantic Fusion Decoder)
 
 PositionalEncoders:
 - [x] PositionalEncoder (1D)
@@ -39,13 +51,12 @@ For example, ASTER model is a mixture of `ASTERTransform`, `ResNet`, `LSTMEncode
 
 ## Getting Started
 ### Dependency
-- This framework was tested with PyTorch 1.4.0, CUDA 10.1, python 3.6 and Ubuntu 18.04.
-- But I belive it will be okay if you intalled PyTorch 1.2+, and CUDA 10.0+.
+- This framework was tested with PyTorch 1.6.0, CUDA 10.1, python 3.7 and Ubuntu 18.04.
 
 ### How to train your own model
 1. Download ICDAR dataset.
-2. Add image files to train into `dataset/icdar/train`
-3. Make annotation files. See `dataset/icdar/train_label.txt` as an example.
+2. Add image files to train into `dataset/icdar/train` (To be uploaded soon)
+3. Make annotation files. See `dataset/icdar/train_label.txt` as an example. (To be uploaded soon)
 4. Run train.py
 
 ```

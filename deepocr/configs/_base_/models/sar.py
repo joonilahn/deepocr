@@ -2,7 +2,7 @@
 model = dict(
     type="SAR",
     pretrained=None,
-    backbone=dict(type="SARBackbone", in_channels=1,),
+    backbone=dict(type="ResNetSAR", in_channels=1,),
     pretransform=None,
     encoder=dict(
         type="LSTMEncoder",

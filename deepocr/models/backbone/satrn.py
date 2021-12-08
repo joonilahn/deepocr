@@ -33,7 +33,7 @@ class SATRNBackbone(nn.Module):
                 nn.ReLU(True),
                 nn.MaxPool2d(2, 2),
             )
-        self.init_weighs(pretrained)
+        self.init_weights(pretrained)
 
     def init_weights(self, pretrained=None):
         if isinstance(pretrained, str):

@@ -14,7 +14,7 @@ class VGG7(nn.Module):
     """VGG network with 7 convolutional layers."""
 
     def __init__(
-        self, in_channels=1, frozen_stages=-1, batch_norm=True,
+        self, in_channels=1, frozen_stages=-1, batch_norm=True, pretrained=None
     ):
         super(VGG7, self).__init__()
 
@@ -98,7 +98,7 @@ class VGG7(nn.Module):
 class VGGSAR(nn.Module):
     """Backbone network for 'Show, Attend and Read' model."""
 
-    def __init__(self, in_channels=3, batch_norm=True, frozen_stages=-1):
+    def __init__(self, in_channels=3, batch_norm=True, frozen_stages=-1, pretrained=None):
         super(VGGSAR, self).__init__()
         self.frozen_stages = frozen_stages
 
@@ -144,7 +144,13 @@ class VGGSAR(nn.Module):
                 nn.ReLU(True),
                 nn.MaxPool2d(1, 2),
             )
+        self.init_weights(pretrained)
 
     def forward(self, x):
         x = self.feature_extractor(x)
         return x
+
+    def init_weights(self, pretrained=None):
+        if isinstance(pretrained, str):
+            logger = get_root_logger()
+            load_checkpoint(self, pretrained, strict=False, logger=logger)
