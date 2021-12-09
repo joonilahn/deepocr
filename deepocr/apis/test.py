@@ -9,7 +9,7 @@ import mmcv
 import torch.distributed as dist
 from mmcv.runner import get_dist_info
 
-from ..datasets.dataset_wrapper import ConcatDataset
+from ..datasets.dataset_wrappers import ConcatDataset
 from ..datasets.pipelines import SimpleTestAug
 
 

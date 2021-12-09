@@ -36,6 +36,8 @@ class CTCConverter(object):
         if os.path.isfile(corpus):
             with open(corpus, "r", encoding="utf-8") as f:
                 list_characters = f.read().replace(",", "")
+        else:
+            raise ValueError
 
         # 0 index for blank_char, -1 index for extra character
         self.corpus_dict[self.blank_char] = 0

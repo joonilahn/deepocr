@@ -81,7 +81,7 @@ class ASTERSTNHead(nn.Module):
         ctrl_points = np.concatenate([ctrl_pts_top, ctrl_pts_bottom], axis=0).astype(
             np.float32
         )
-        if self.activation is "none":
+        if self.activation == "none":
             pass
         elif self.activation == "sigmoid":
             ctrl_points = -np.log(1.0 / ctrl_points - 1.0)

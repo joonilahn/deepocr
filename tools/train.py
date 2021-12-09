@@ -10,8 +10,8 @@ from mmcv import Config, DictAction
 from mmcv.runner import init_dist
 
 from deepocr.utils import collect_env
-from deepocr.apis import train_detector, set_random_seed
 from deepocr.datasets import build_dataset
+from deepocr.apis import train_detector, set_random_seed
 from deepocr.models import build_recognizer
 from deepocr.utils import get_root_logger
 

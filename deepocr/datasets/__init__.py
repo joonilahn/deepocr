@@ -7,6 +7,7 @@ from .builder import (CONVERTERS, DATASETS, PIPELINES, build_converter,
 from .converters import *
 from .kocrDataset import KOCRDataset
 from .pipelines import *
+from .dataset_wrappers import *
 
 __all__ = [
     "KOCRDataset",
