@@ -47,6 +47,12 @@ class EncoderDecoder(BaseRecognizer):
         # extract features
         features = self.extract_feat(img)
 
+        if len(features.size()) > 3:
+            height = features.size(2)
+            assert height == 1, "the height of features must be 1"
+            features = features.squeeze(2)
+            features = features.permute(2, 0, 1)  # [w, b, c]
+
         # encoder-decoder
         hidden = self.encoder(features)
         hidden = hidden.permute(
@@ -59,6 +65,12 @@ class EncoderDecoder(BaseRecognizer):
     def simple_test(self, img, img_metas, **kwargs):
         # extract features
         features = self.extract_feat(img)
+
+        if len(features.size()) > 3:
+            height = features.size(2)
+            assert height == 1, "the height of features must be 1"
+            features = features.squeeze(2)
+            features = features.permute(2, 0, 1)  # [w, b, c]
 
         # encoder-decoder
         hidden = self.encoder(features)

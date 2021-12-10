@@ -11,6 +11,7 @@ setup(
     keywords="optical character recognition",
     packages=find_packages(),
     install_requires=[
+        "torch==1.7.1",
         "mmcv-full==1.3.1",
         "Pillow",
         "tensorboardX>=2.0",
@@ -19,6 +20,8 @@ setup(
         "albumentations==0.4.3",
         "imagecorruptions==1.1.0",
         "soynlp",
+        "future",
+        "tensorboard"
     ],
     classifiers=[
         "Programming Language :: Python :: 3",

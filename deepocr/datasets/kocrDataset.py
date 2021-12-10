@@ -37,7 +37,7 @@ class KOCRDataset(Dataset):
 
         Args:
             data_root (str): Path for the dataset's root directory.
-            img_prefix (str): Use if the data is divided into different directory, such as 'train.py', 'test'.
+            img_prefix (str): Use if the data is divided into different directory, such as 'train', 'test'.
             ann_file (str): Path for the label file which contains all the annotation info.
             pipeline (list[dict]): mmdetection-like transform object. Defaults to None.
             converter (dict): config dictionary for converter.
@@ -56,7 +56,7 @@ class KOCRDataset(Dataset):
 
         # load annotations
         self.ann_file_pattern = re.compile(r"([a-zA-Z0-9\-\_]+\.\w{3,4}),\s{0,1}(.+)")
-        self.data_infos, self.label_map = self.load_annotations(self.ann_file)
+        self.data_infos = self.load_annotations(self.ann_file)
 
         if max_num_data:
             random.shuffle(self.data_infos)

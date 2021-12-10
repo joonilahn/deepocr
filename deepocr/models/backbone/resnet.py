@@ -79,11 +79,11 @@ class ResNetAster(nn.Module):
         self.layer0.add_module("relu1", nn.ReLU(inplace=True))
 
         self.inplanes = 32
-        self.layer1 = self.make_layer(self.inplanes, 32, 3, [2, 2], batch_norm)  # [16, 50]
-        self.layer2 = self.make_layer(self.inplanes, 64, 4, [2, 2], batch_norm)  # [8, 25]
-        self.layer3 = self.make_layer(self.inplanes, 128, 6, [2, 1], batch_norm)  # [4, 25]
-        self.layer4 = self.make_layer(self.inplanes, 256, 6, [2, 1], batch_norm)  # [2, 25]
-        self.layer5 = self.make_layer(self.inplanes, 512, 3, [2, 1], batch_norm)  # [1, 25]
+        self.layer1 = self.make_layer(32, 32, 3, [2, 2], batch_norm)  # [16, 50]
+        self.layer2 = self.make_layer(32, 64, 4, [2, 2], batch_norm)  # [8, 25]
+        self.layer3 = self.make_layer(64, 128, 6, [2, 1], batch_norm)  # [4, 25]
+        self.layer4 = self.make_layer(128, 256, 6, [2, 1], batch_norm)  # [2, 25]
+        self.layer5 = self.make_layer(256, 512, 3, [2, 1], batch_norm)  # [1, 25]
 
         self.out_planes = 512
 

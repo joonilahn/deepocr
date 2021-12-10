@@ -10,7 +10,7 @@ log_level = "INFO"
 dist_params = dict(backend="nccl")
 
 # set workflow and work_dir
-workflow = [("train.py", 1)]
+workflow = [("train", 1)]
 
 # if resuming from a checkpoint
 resume_from = None

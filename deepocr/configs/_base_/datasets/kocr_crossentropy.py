@@ -57,7 +57,7 @@ data = dict(
         dict(
             type=dataset_type,
             data_root=data_root,
-            img_prefix="train.py",
+            img_prefix="train",
             ann_file="labels_train.csv",
             pipeline=train_pipeline,
             converter=dict(

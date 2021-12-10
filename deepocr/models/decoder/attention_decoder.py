@@ -161,7 +161,7 @@ class AttentionDecoder2D(nn.Module):
         num_steps = self.max_decoding_length + 1
         probs = torch.zeros(batch_size, num_steps, self.num_classes).to(device)
 
-        # decoder for train.py mode
+        # decoder for train mode
         gt_label_no_eos = gt_label[:, :-1].clone()  # exclude 'EOS'
         tgt_embedding = self.embedding(gt_label_no_eos)
         tgt_embedding = tgt_embedding.permute(

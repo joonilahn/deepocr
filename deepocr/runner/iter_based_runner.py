@@ -37,12 +37,12 @@ class IterLoader:
 
 class IterBasedRunner(BaseRunner):
     """Iteration-based Runner.
-    This runner train.py models iteration by iteration.
+    This runner train models iteration by iteration.
     """
 
     def train(self, data_loader, **kwargs):
         self.model.train()
-        self.mode = 'train.py'
+        self.mode = 'train'
         self.data_loader = data_loader
         self._epoch = data_loader.epoch
         self.call_hook('before_train_iter')
@@ -78,7 +78,7 @@ class IterBasedRunner(BaseRunner):
             data_loaders (list[:obj:`DataLoader`]): Dataloaders for training
                 and validation.
             workflow (list[tuple]): A list of (phase, iters) to specify the
-                running order and iterations. E.g, [('train.py', 10000),
+                running order and iterations. E.g, [('train', 10000),
                 ('val', 1000)] means running 10000 iterations for training and
                 1000 iterations for validation, iteratively.
             max_iters (int): Total training iterations.
@@ -108,7 +108,7 @@ class IterBasedRunner(BaseRunner):
                         format(mode))
                 iter_runner = getattr(self, mode)
                 for _ in range(iters):
-                    if mode == 'train.py' and self.iter >= max_iters:
+                    if mode == 'train' and self.iter >= max_iters:
                         return
                     iter_runner(iter_loaders[i], **kwargs)
 

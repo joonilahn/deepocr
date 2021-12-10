@@ -14,12 +14,12 @@ from mmcv.runner.utils import get_host_info
 class EpochBasedRunner(BaseRunner):
     """Epoch-based Runner.
 
-    This runner train.py models epoch by epoch.
+    This runner train models epoch by epoch.
     """
 
     def train(self, data_loader, **kwargs):
         self.model.train()
-        self.mode = "train.py"
+        self.mode = "train"
         self.data_loader = data_loader
         self._max_iters = self._max_epochs * len(data_loader)
         self.call_hook("before_train_epoch")
@@ -80,7 +80,7 @@ class EpochBasedRunner(BaseRunner):
             data_loaders (list[:obj:`DataLoader`]): Dataloaders for training
                 and validation.
             workflow (list[tuple]): A list of (phase, epochs) to specify the
-                running order and epochs. E.g, [('train.py', 2), ('val', 1)] means
+                running order and epochs. E.g, [('train', 2), ('val', 1)] means
                 running 2 epochs for training and 1 epoch for validation,
                 iteratively.
             max_epochs (int): Total training epochs.
@@ -92,7 +92,7 @@ class EpochBasedRunner(BaseRunner):
         self._max_epochs = max_epochs
         for i, flow in enumerate(workflow):
             mode, epochs = flow
-            if mode == "train.py":
+            if mode == "train":
                 self._max_iters = self._max_epochs * len(data_loaders[i])
                 break
 
@@ -106,7 +106,7 @@ class EpochBasedRunner(BaseRunner):
         while self.epoch < max_epochs:
             for i, flow in enumerate(workflow):
                 mode, epochs = flow
-                if isinstance(mode, str):  # self.train.py()
+                if isinstance(mode, str):  # self.train()
                     if not hasattr(self, mode):
                         raise ValueError(
                             f'runner has no method named "{mode}" to run an ' "epoch"
@@ -118,7 +118,7 @@ class EpochBasedRunner(BaseRunner):
                     )
 
                 for _ in range(epochs):
-                    if mode == "train.py" and self.epoch >= max_epochs:
+                    if mode == "train" and self.epoch >= max_epochs:
                         return
                     epoch_runner(data_loaders[i], **kwargs)
 
