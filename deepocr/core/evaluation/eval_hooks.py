@@ -94,11 +94,11 @@ class EvalHook(Hook):
 
                 if isinstance(runner, EpochBasedRunner):
                     best_weight_name = "best_{}_{:.1f}_epoch_{}.pth".format(
-                        self.save_best, self.eval_history.best * 100.0, runner.epoch + 1
+                        self.save_best, self.eval_history.best, runner.epoch + 1
                     )
                 elif isinstance(runner, IterBasedRunner):
                     best_weight_name = "best_{}_{:.1f}_iter_{}.pth".format(
-                        self.save_best, self.eval_history.best * 100.0, runner.iter + 1
+                        self.save_best, self.eval_history.best, runner.iter + 1
                     )
                 else:
                     raise NotImplementedError
